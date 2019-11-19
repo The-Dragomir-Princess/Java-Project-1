@@ -17,7 +17,7 @@ class banking
 		public void Create_Account()	throws IOException
 		{
 		
-		FileWriter f=new FileWriter("/home/twisha/Desktop/Project/Acount_details.txt");
+		FileWriter f=new FileWriter("/home/twisha/Desktop/Project/Acount_details.txt",true);
 		BufferedWriter f1 = new BufferedWriter(f);
 		
 			Scanner sc= new Scanner(System.in);
@@ -46,6 +46,27 @@ class banking
 			f.close();
 		
 		}
-	
+	public void deposit() throws IOException
+       {
+       Scanner sc= new Scanner(System.in);
+       System.out.println("Enter the date:");
+       date=sc.nextLine();
+       System.out.println("Enter your account number:");
+       number=sc.nextInt();
+       System.out.println("Enter the amount to be deposited:");
+       amt=sc.nextInt();
+       System.out.println("Processing request");
+       cust_bal= cust_bal+amt;
+       System.out.println("Request processed"+"\n Remaining balance in account:"+cust_bal);
+       FileWriter fn=new FileWriter("/home/twisha/Desktop/Project/deposit_log.txt",true);
+		BufferedWriter bn = new BufferedWriter(fn);
+		bn.write("Account " + number+ "	|");
+		bn.write("|		" +date + "		");
+		bn.write("|		" +amt + "		");
+		bn.write("|		" +cust_bal + "		");
+		bn.newLine();
+		bn.close();
+		fn.close();
+       }
 	
 	
