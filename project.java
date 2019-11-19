@@ -69,4 +69,29 @@ class banking
 		fn.close();
        }
 	
-	
+	public void withdraw() throws IOException
+       {
+		    Scanner sc= new Scanner(System.in);
+		    System.out.println("Enter the date:");
+		   date=sc.nextLine();
+		   System.out.println("Enter your account number:");
+		   number=sc.nextInt();
+		   System.out.println("Enter the amount to be withdrawn:");
+		   if(amt>cust_bal)
+		   		System.out.println("Insufficient funds");
+		   else
+			   {
+			   System.out.println("Processing request");
+			   
+			   		cust_bal=cust_bal-amt;
+			   }
+			 FileWriter f2=new FileWriter("/home/twisha/Desktop/Project/Withdraw_log.txt",true);
+			BufferedWriter b2 = new BufferedWriter(f2);
+			b2.write("Account " + number+ "	|");
+			b2.write("|		" +date + "		");
+			b2.write("|		" +amt + "		");
+			b2.write("|		" +cust_bal + "		");
+			b2.newLine();
+			b2.close();
+			f2.close();
+			}
